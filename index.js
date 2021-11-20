@@ -8,18 +8,24 @@ let gotBlackJack = false;
 // boolean for if the user's hand goes over 21
 let userIsAlive = true;
 
-if (cardSum <= 20) {
-    console.log("Hit?");
-} else if (cardSum === 21) {
-    console.log("Blackjack 21!!!");
+// variable for storing string messages
+let message = "";
+
+let startGame = () => {
+  if (cardSum <= 20) {
+    message = "Hit?";
+  } else if (cardSum === 21) {
+    message = "Blackjack 21!!!";
     /* the boolean gets turned to true if 
     the user gets blackjack*/
     gotBlackJack = true;
-} else {
-    console.log("Busted");
+  } else {
+    message = "Busted";
     userIsAlive = false;
-}
+  }
+};
 
 //checking the booleans
 console.log(gotBlackJack);
 console.log(userIsAlive);
+console.log(message);
