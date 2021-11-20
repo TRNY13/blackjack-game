@@ -1,15 +1,15 @@
 //Card values for the game
-let card1 = 10;
+let card1 = 6;
 let card2 = 11;
 let cardSum = card1 + card2;
-
 // boolean for if the user gets blackjack
 let gotBlackJack = false;
 // boolean for if the user's hand goes over 21
 let userIsAlive = true;
-
-// variable for storing string messages
-let message = "";
+let message = " ";
+// grabbing message-el from html and storing the info into js
+let messageEl = document.getElementById("message-el");
+console.log(messageEl)
 
 let startGame = () => {
   if (cardSum <= 20) {
@@ -23,9 +23,7 @@ let startGame = () => {
     message = "Busted";
     userIsAlive = false;
   }
-};
+messageEl.textContent = message  
+}
 
-//checking the booleans
-console.log(gotBlackJack);
-console.log(userIsAlive);
-console.log(message);
+
