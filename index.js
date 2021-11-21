@@ -1,7 +1,7 @@
 //Card values for the game
 let card1 = 10;
 let card2 = 11;
-let cards = [card1, card2];
+let cardsArray = [card1, card2];
 let cardSum = card1 + card2;
 // boolean for if the user gets blackjack
 let gotBlackJack = false;
@@ -16,14 +16,17 @@ let sumEl = document.getElementById("sum-el");
 let cardsEl = document.getElementById("cards-el");
 
 let startGame = () => {
-    renderGame();
-}
+  renderGame();
+};
 
 let renderGame = () => {
+  cardsEl.textContent = "Cards: " 
 
-sumEl.textContent = "Sum: " + cardSum;
-cardsEl.textContent = "Cards: " + cards[0] + " " + cards[1];
+  for (let i = 0 ; i < cardsArray.length ; i++ ){
+    cardsEl.textContent += cardsArray[i] + " "
+  }
 
+  sumEl.textContent = "Sum: " + cardSum;
   if (cardSum <= 20) {
     message = "Hit?";
   } else if (cardSum === 21) {
@@ -36,12 +39,13 @@ cardsEl.textContent = "Cards: " + cards[0] + " " + cards[1];
     userIsAlive = false;
   }
 
-messageEl.textContent = message;
-}
+  messageEl.textContent = message;
+};
 
 let newCard = () => {
-    console.log("Drawing a new card!");
-    let card = 2;
-    cardSum += card;
-    renderGame();
-}
+  console.log("Drawing a new card!");
+  let card = 2;
+  cardSum += card;
+  cardsArray.push(card);
+  renderGame();
+};
