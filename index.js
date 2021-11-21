@@ -1,12 +1,12 @@
-//Card values for the game
-let card1 = 10;
-let card2 = 11;
-let cardsArray = [card1, card2];
-let cardSum = card1 + card2;
+// //Card values for the game
+// let card1 = callRandomCard();
+// let card2 = callRandomCard();
+let cardsArray = [];
+let cardSum = 0;
 // boolean for if the user gets blackjack
 let gotBlackJack = false;
 // boolean for if the user's hand goes over 21
-let userIsAlive = true;
+let userIsAlive = false;
 let message = " ";
 // grabbing message-el from html and storing the info into js
 let messageEl = document.getElementById("message-el");
@@ -15,8 +15,34 @@ let sumEl = document.getElementById("sum-el");
 
 let cardsEl = document.getElementById("cards-el");
 
+// checking to see if the array is empty before the user starts
+// the game
+console.log(cardsArray)
+
+// callRandomCard uses function decleration, allows it to automatically
+// get hoisted to the top of the code
+function callRandomCard  () {
+  
+  let randomNumber = Math.floor(Math.random() * 13) + 1
+
+  if (randomNumber > 10 ){
+    return 10
+  } else if (randomNumber === 1){
+    return 11
+  } else{
+    return randomNumber
+  }
+
+}
+
 let startGame = () => {
+  let card1 = callRandomCard()
+  let card2 = callRandomCard()
+  cardsArray = [card1, card2]
+  cardSum = card1 + card2
+  userIsAlive = true
   renderGame();
+  
 };
 
 let renderGame = () => {
@@ -40,12 +66,14 @@ let renderGame = () => {
   }
 
   messageEl.textContent = message;
+  console.log(cardsArray)
 };
 
 let newCard = () => {
   console.log("Drawing a new card!");
-  let card = 2;
+  let card = callRandomCard();
   cardSum += card;
   cardsArray.push(card);
   renderGame();
+ 
 };
